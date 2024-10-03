@@ -13,10 +13,4 @@ result = disc(value1, value2, value3)
 
 print("Результат =", result)
 
-def find_num(a, b, c):
-    if result > 0:
-        print("Рівняння має два корені ")
-    elif result == 0:
-        print("Рівняння має один корінь ")
-    else:
-       print("Рівняння не має коренів ")
+
