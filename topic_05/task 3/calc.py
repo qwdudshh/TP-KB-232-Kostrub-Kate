@@ -2,13 +2,11 @@ from operations import get_number, get_operation
 from functions import sum, sub, mult, div
 
 def calculator():
-    print("Ласкаво просимо до калькулятора!")
-    
     a = get_number("Введіть перше число: ")
 
     while True:
         operation = get_operation()
-        
+
         b = get_number("Введіть друге число: ")
 
         try:
@@ -29,8 +27,6 @@ def calculator():
 
         again = input("Бажаєте продовжити? (так/ні): ").lower()
         if again != "так":
-            print("Дякуємо за використання калькулятора!")
             break
 
 calculator()
-
