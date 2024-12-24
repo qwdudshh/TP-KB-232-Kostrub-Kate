@@ -3,10 +3,10 @@
 ## Item {"name":"Jon", "phone":"0631234567"}
 
 list = [
-    {"name":"Bob", "phone":"0631234567", "email":"bob@email.com", "group":"A1"},
-    {"name":"Emma", "phone":"0631234567", "email":"emma@email.com", "group":"A2"},
-    {"name":"Jon",  "phone":"0631234567", "email":"jon@email.com", "group":"A1"},
-    {"name":"Zak",  "phone":"0631234567", "email":"zak@email.com", "group":"B1"}
+    {"name":"Bob", "phone":"0631234567", "email":"bob@email.com", "group":"1"},
+    {"name":"Emma", "phone":"0631234567", "email":"emma@email.com", "group":"2"},
+    {"name":"Jon",  "phone":"0631234567", "email":"jon@email.com", "group":"1"},
+    {"name":"Zak",  "phone":"0631234567", "email":"zak@email.com", "group":"1"}
 ]
 
 def printAllList():
@@ -21,7 +21,7 @@ def addNewElement():
     email = input("Please enter student email: ")
     group = input("Please enter student group: ")
     newItem = {"name": name, "phone": phone, "email": email, "group": group}
-    # find insert position
+
     insertPosition = 0
     for item in list:
         if name > item["name"]:
