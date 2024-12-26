@@ -40,7 +40,7 @@ def evaluate_rpn(rpn):
     stack = []
 
     for elem in rpn:
-        if elem in act:  # Оператор
+        if elem in act:  
             b = float(stack.pop())
             a = float(stack.pop())
             match elem:
