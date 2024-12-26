@@ -1,44 +1,46 @@
 import unittest
-import csv
-import tempfile
-import os
-from lab_2 import load_from_csv, save_to_csv, directory
+from unittest.mock import patch
+from io import StringIO
+import sys
+from lab_2 import students, add_student, delete_student, update_student, print_all_students
 
-class TestStudentDirectory(unittest.TestCase):
-
+class TestStudentList(unittest.TestCase):
     def setUp(self):
-        self.test_file = tempfile.NamedTemporaryFile(delete=False, mode='w', newline='', encoding='utf-8')
-        self.test_filename = self.test_file.name
-        self.test_file.close()
+        students.clear()
 
-    def tearDown(self):
-        if os.path.exists(self.test_filename):
-            os.remove(self.test_filename)
+    @patch('builtins.input', side_effect=["John", "123456789", "CS-101"])
+    def test_add_student(self, mock_input):
+        add_student()
+        self.assertEqual(len(students), 1)
+        self.assertEqual(students[0]['name'], "John")
+        self.assertEqual(students[0]['phone'], "123456789")
+        self.assertEqual(students[0]['group'], "CS-101")
 
-    def test_load_from_csv(self):
-        data = [
-            {"name": "John", "phone": "1234567890", "email": "john@example.com", "group": "556"},
-            {"name": "Jane", "phone": "9876543210", "email": "jane@example.com", "group": "456"}
-        ]
-        
-        with open(self.test_filename, mode='w', newline='', encoding='utf-8') as file:
-            writer = csv.DictWriter(file, fieldnames=["name", "phone", "email", "group"])
-            writer.writeheader()
-            writer.writerows(data)
+    @patch('builtins.input', return_value="Jane")
+    def test_delete_student(self, mock_input):
+        students.append({"name": "Jane", "phone": "987654321", "group": "CS-102"})
+        delete_student()
+        self.assertEqual(len(students), 0)
 
-        load_from_csv(self.test_filename)
-        self.assertEqual(len(directory), 2)
-        self.assertEqual(directory[0]["name"], "John Doe")
+    @patch('builtins.input', side_effect=["Ivan","Ivan", "444999666", "CS-104"])
+    def test_update_student(self, mock_input):
+        students.append({"name": "Alice", "phone": "111222333", "group": "CS-103"})
+        update_student()
+        self.assertEqual(len(students), 1)
+        self.assertEqual(students[0]['name'], "Alice")
+        self.assertEqual(students[0]['phone'], "444555666")
+        self.assertEqual(students[0]['group'], "CS-104")
 
-    def test_save_to_csv(self):
-        directory.append({"name": "Charlie", "phone": "5555555555", "email": "charlie@example.com", "group": "758"})
-        save_to_csv(self.test_filename)
+    def test_print_all_students(self):
+        students.append({"name": "Michael", "phone": "321321321", "group": "CS-204"})
+        captured_output = StringIO()
+        original_stdout = sys.stdout  
+        sys.stdout = captured_output  
+        try:
+            print_all_students()
+        finally:
+            sys.stdout = original_stdout  
+        self.assertIn("Michael", captured_output.getvalue())
 
-        with open(self.test_filename, mode='r', newline='', encoding='utf-8') as file:
-            reader = csv.DictReader(file)
-            rows = list(reader)
-            self.assertEqual(len(rows), 1)
-            self.assertEqual(rows[0]["name"], "Charlie Brown")
-
-if __name__ == "__main__":
+if __name__== '__main__':
     unittest.main()

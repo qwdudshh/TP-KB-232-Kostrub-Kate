@@ -1,2 +1,6 @@
-name,phone,email,group
-Kate,2647852564,ertyu@gmail.com,234
+name,phone,group
+Alice,111222333,CS-103
+Ivan,444999666,CS-104
+Jane,987654321,CS-102
+John,123456789,CS-101
+Michael,321321321,CS-103

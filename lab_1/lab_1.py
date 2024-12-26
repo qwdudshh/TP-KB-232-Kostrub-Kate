@@ -3,10 +3,10 @@
 ## Item {"name":"Jon", "phone":"0631234567"}
 
 list = [
-    {"name":"Bob", "phone":"0631234567", "email":"bob@email.com", "group":"1"},
-    {"name":"Emma", "phone":"0631234567", "email":"emma@email.com", "group":"2"},
-    {"name":"Jon",  "phone":"0631234567", "email":"jon@email.com", "group":"1"},
-    {"name":"Zak",  "phone":"0631234567", "email":"zak@email.com", "group":"1"}
+    {"name":"Bob", "phone":"0631234567", "email":"bob@gmail.com", "group":"1"},
+    {"name":"Emma", "phone":"0631234567", "email":"emma@gmail.com", "group":"2"},
+    {"name":"Jon",  "phone":"0631234567", "email":"jon@gmail.com", "group":"1"},
+    {"name":"Zak",  "phone":"0631234567", "email":"zak@gmail.com", "group":"1"}
 ]
 
 def printAllList():
@@ -61,7 +61,7 @@ def updateElement():
 
 def main():
     while True:
-        chouse = input("Please specify the action [ C create, U update, D delete, P print,  X exit ]: ")
+        chouse = input("Please specify the action [ C create, U update, D delete, P print,  E exit ]: ")
         match chouse:
             case "C" | "c":
                 print("New element will be created:")
