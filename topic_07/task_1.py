@@ -8,53 +8,6 @@ person = Person("Alice", 25)
 print(f"Ім'я: {person.name}, Вік: {person.age}")
 
 
-
-class Book:
-    def __init__(self, title, author):
-        self.title = title
-        self.author = author
-
-    def __str__(self):
-        """Повертає текстове представлення об'єкта для користувача."""
-        return f"Книга: '{self.title}' Автор: {self.author}"
-
-book = Book("1984", "George Orwell")
-print(book) 
-
-
-
-class Point:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-    def __repr__(self):
-        """Повертає офіційне представлення об'єкта."""
-        return f"Point(x={self.x}, y={self.y})"
-
-point = Point(2, 3)
-print(repr(point))  
-
-
-class Car:
-    def __init__(self, model, year):
-        self.model = model
-        self.year = year
-
-    def __eq__(self, other):
-        """Перевіряє рівність об'єктів."""
-        return self.model == other.model and self.year == other.year
-
-
-car1 = Car("Tesla", 2020)
-car2 = Car("Tesla", 2020)
-car3 = Car("BMW", 2019)
-
-print(car1 == car2)  
-print(car1 == car3)  
-
-
-
 class Vector:
     def __init__(self, x, y):
         self.x = x
