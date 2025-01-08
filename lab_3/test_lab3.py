@@ -57,7 +57,7 @@ class TestStudentList(unittest.TestCase):
 
         with open(self.test_file, "r", encoding="utf-8") as file:
             content = file.readlines()
-        self.assertEqual(len(content), 3)  # Header + 2 students
+        self.assertEqual(len(content), 3)  
         self.assertIn("John Doe,123456789,A\n", content[1:])
         self.assertIn("Jane Smith,987654321,B\n", content[1:])
 

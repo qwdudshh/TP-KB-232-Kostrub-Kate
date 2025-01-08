@@ -3,10 +3,10 @@
 ## Item {"name":"Jon", "phone":"0631234567"}
 
 list = [
-    {"name":"Bob", "phone":"0631234567", "email":"bob@gmail.com", "group":"1"},
-    {"name":"Emma", "phone":"0631234567", "email":"emma@gmail.com", "group":"2"},
-    {"name":"Jon",  "phone":"0631234567", "email":"jon@gmail.com", "group":"1"},
-    {"name":"Zak",  "phone":"0631234567", "email":"zak@gmail.com", "group":"1"}
+    {"name": "Bob", "phone": "0631234567", "email": "bob@gmail.com", "group": "1"},
+    {"name": "Emma", "phone": "0631234567", "email": "emma@gmail.com", "group": "2"},
+    {"name": "Jon", "phone": "0631234567", "email": "jon@gmail.com", "group": "1"},
+    {"name": "Zak", "phone": "0631234567", "email": "zak@gmail.com", "group": "1"}
 ]
 
 def printAllList():
@@ -52,10 +52,18 @@ def updateElement():
     
     if student:
         print(f"Updating information for {name}:")
+        
+   
+        new_name = input(f"Enter new name (current: {student['name']}): ") or student["name"]
         student["phone"] = input(f"Enter new phone (current: {student['phone']}): ") or student["phone"]
         student["email"] = input(f"Enter new email (current: {student['email']}): ") or student["email"]
         student["group"] = input(f"Enter new group (current: {student['group']}): ") or student["group"]
-        print(f"Information for {name} has been updated.")
+        
+        if new_name != student["name"]:
+            student["name"] = new_name
+            print(f"Name has been updated to {new_name}.")
+        
+        print(f"Information for {new_name} has been updated.")
     else:
         print(f"Student {name} not found.")
 
@@ -78,7 +86,7 @@ def main():
             case "P" | "p":
                 print("List will be printed")
                 printAllList()
-            case "X" | "x":
+            case "E" | "e":
                 print("Exiting program.")
                 break
             case _:
